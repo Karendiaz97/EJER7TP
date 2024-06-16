@@ -73,7 +73,7 @@ char msg1[50];
 char msg2[50];
 
 
-void HAL_UART_ReadString(UART_HandleTypeDef *huart, char *str, uint8_t size);
+void HAL_UART_ReadString(UART_HandleTypeDef *huart, char *string, uint8_t size);
 
 /* USER CODE END 0 */
 
@@ -126,6 +126,8 @@ int main(void)
          int motor_speed = atoi((char *)dato_rx);
 
          if (motor_speed >=0 && motor_speed <= 100) {
+             HAL_GPIO_WritePin(GPIOA, PIN1_Pin, 1);
+             HAL_GPIO_WritePin(GPIOA, PIN2_Pin, 0);
         	 __HAL_TIM_SET_COMPARE(&htim2, TIM_CHANNEL_2, motor_speed);
         	 sprintf(msg1, "Velocidad del motor: %u%%\r\n", motor_speed);
         	 HAL_UART_Transmit(&huart1, (uint8_t*)msg1, strlen(msg1), HAL_MAX_DELAY);
