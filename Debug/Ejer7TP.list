@@ -144,6 +144,7 @@ int main(void)
   while (1)
 
      {
+
          HAL_UART_ReadString(&huart1, dato_rx, 10);
  8000192:	220a      	movs	r2, #10
  8000194:	4920      	ldr	r1, [pc, #128]	; (8000218 <main+0xbc>)

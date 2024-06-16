@@ -122,6 +122,7 @@ int main(void)
   while (1)
 
      {
+
          HAL_UART_ReadString(&huart1, dato_rx, 10);
          int motor_speed = atoi((char *)dato_rx);
 
